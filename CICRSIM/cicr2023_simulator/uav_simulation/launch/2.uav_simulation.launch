@@ -1,0 +1,31 @@
+<launch>
+
+  <arg name="init_x" value="0.0"/>
+  <arg name="init_y" value="0.0"/>
+  <arg name="init_z" value="0.0"/> 
+
+  <arg name="roll" default="0.0"/>
+  <arg name="pitch" default="0.0"/>
+  <arg name="yaw" default="1.0"/> 
+
+    <!-- topic of your odometry-->
+  <arg name="odom_topic" value="/ardrone/ground_truth/odometry" />
+
+
+
+<!-- uav simulation -->
+  <include file="$(find uav_simulation)/launch/uav_simulator_my.xml">
+    <arg name="odometry_topic" value="$(arg odom_topic)" />
+    <arg name="init_x" value="$(arg init_x)" />
+    <arg name="init_y" value="$(arg init_y)" />
+    <arg name="init_z" value="$(arg init_z)" />
+
+    <arg name="roll" value="$(arg roll)"/>
+    <arg name="pitch" value="$(arg pitch)"/>
+    <arg name="yaw" value="$(arg yaw)"/>
+
+  </include>
+
+
+
+</launch>
